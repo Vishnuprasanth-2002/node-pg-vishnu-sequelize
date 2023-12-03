@@ -1,40 +1,36 @@
 module.exports = function model(sequelize, types) {
-    const items = sequelize.define(
-      "items",
-      {
-        item_id: {
-          type: types.UUID,
-          defaultValue: types.UUIDV4,
-          primarykey: true,
-          unique: true,
-        },
-        item_name: {
-          type: types.STRING,
-          defaultValue: "",
-        },
-        item_content: {
-          type: types.STRING,
-          defaultValue: "",
-        },
-        price: {
-          type: types.DECIMAL(10, 2),
-          defaultValue: 0,
-        },
-        item_count: {
-          type: types.INTEGER,
-          defaultValue: 0,
-        },
+  const items = sequelize.define(
+    "items",
+    {
+      item_id: {
+        type: types.UUID,
+        defaultValue: types.UUIDV4,
+        primarykey: true,
+        unique: true,
       },
-  
-      {
-        tableName: "items",
-        // defaultScope: {
-        //     where: {
-        //         status: 'Active'
-        //     }
-        // }
-      }
-    );
-  
-    return items;
-  };
+      item_name: {
+        type: types.STRING,
+        defaultValue: "",
+      },
+      item_content: {
+        type: types.STRING,
+        defaultValue: "",
+      },
+      price: {
+        type: types.DECIMAL(10, 2),
+        defaultValue: 0,
+      },
+      item_count: {
+        type: types.INTEGER,
+        defaultValue: 0,
+      },
+    },
+
+    {
+      tableName: "items",
+      timestamps: false,
+    }
+  );
+
+  return items;
+};
