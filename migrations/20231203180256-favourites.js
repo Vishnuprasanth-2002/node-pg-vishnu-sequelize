@@ -1,22 +1,46 @@
-'use strict';
+"use strict";
 
-/** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
-    /**
-     * Add altering commands here.
-     *
-     * Example:
-     * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
-     */
+  up: async (queryInterface, Sequelize) => {
+    await queryInterface.createTable("favourites", {
+      id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        autoIncrement: true,
+        unique: true,
+      },
+      fav_id: {
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4,
+        primarykey: true,
+        unique: true,
+      },
+      user_id: {
+        type: Sequelize.UUID,
+        references: {
+          model: {
+            tableName: "users",
+          },
+          key: "user_id",
+        },
+        allowNull: false,
+        onDelete: "CASCADE",
+      },
+      item_id: {
+        type: Sequelize.UUID,
+        references: {
+          model: {
+            tableName: "items",
+          },
+          key: "item_id",
+        },
+        allowNull: false,
+        onDelete: "CASCADE",
+      },
+    });
   },
 
-  async down (queryInterface, Sequelize) {
-    /**
-     * Add reverting commands here.
-     *
-     * Example:
-     * await queryInterface.dropTable('users');
-     */
-  }
+  down: async (queryInterface) => {
+    await queryInterface.dropTable("favourites");
+  },
 };
