@@ -1,4 +1,4 @@
-const { models, Sequelize } = require("../config/sequelize-config");
+const { models } = require("../config/sequelize-config");
 
 const addUserController = async (req, res, next) => {
   try {
