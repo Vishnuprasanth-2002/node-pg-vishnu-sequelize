@@ -1,0 +1,24 @@
+const express = require("express");
+const {
+  signUpSchema,
+  updateSchema,
+  loginSchema,
+} = require("../validation/authentication.schema");
+const {
+  addUserController,
+  loginController,
+  accountViewController,
+  updateController,
+} = require("../controllers/user.controller");
+const { validate } = require("../middlewares/validate.middleware");
+const userRouter = express.Router();
+
+userRouter.post("/signup", validate(signUpSchema), addUserController);
+
+userRouter.post("/login", validate(loginSchema), loginController);
+
+userRouter.get("/user/:id", accountViewController);
+
+userRouter.patch("/user/:id", validate(updateSchema), updateController);
+
+module.exports = userRouter;
