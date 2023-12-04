@@ -73,25 +73,20 @@ const loginController = async (req, res, next) => {
   }
 };
 
-const accountViewController = async (req, res, next) => {
+const accountViewController = async (req, res) => {
   try {
     const searchUser = await models.users.findOne({
-      where: { id: req.params.id },
+      where: {
+        id: req.params.id || req.decoded.id,
+      },
+      logging: true,
     });
-    if (searchUser === null) {
-      return next({
-        status: 400,
-        message: "user not found",
-      });
-    } else {
-      res.json({
-        searchUser,
-      });
-    }
+    return res.json({
+      searchUser,
+    });
   } catch (error) {
-    return res.send({
-      message: error.errors.map((d) => d.message),
-    });
+    console.log("\n error...", error);
+    return res.send(error);
   }
 };
 
