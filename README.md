@@ -74,6 +74,6 @@ for more info visit [Documentation](http://docs.sequelizejs.com/manual/tutorial/
 
 `npm start`
 
-## dev
+## run nodemon
 
-`npm dev run 
+`npm dev run`
