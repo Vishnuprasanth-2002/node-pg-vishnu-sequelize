@@ -73,3 +73,7 @@ for more info visit [Documentation](http://docs.sequelizejs.com/manual/tutorial/
 ## Start
 
 `npm start`
+
+## dev
+
+`npm dev run 
