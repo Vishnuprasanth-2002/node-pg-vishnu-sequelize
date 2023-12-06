@@ -1,4 +1,4 @@
-## DB migrations
+### DB migrations
 
 Need **sequelize-cli**
 
