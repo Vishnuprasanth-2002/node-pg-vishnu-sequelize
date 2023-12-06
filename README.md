@@ -79,3 +79,5 @@ for more info visit [Documentation](http://docs.sequelizejs.com/manual/tutorial/
 `npm dev run`
 
 ## use express 
+
+ `to simply the code`
