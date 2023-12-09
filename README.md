@@ -83,3 +83,5 @@ for more info visit [Documentation](http://docs.sequelizejs.com/manual/tutorial/
  `to simply the code`
 
 ## body-parser
+
+ `to manage the data types`
