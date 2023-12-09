@@ -81,3 +81,5 @@ for more info visit [Documentation](http://docs.sequelizejs.com/manual/tutorial/
 ## use express 
 
  `to simply the code`
+
+## body-parser
