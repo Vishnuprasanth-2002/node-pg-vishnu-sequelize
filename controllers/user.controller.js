@@ -90,7 +90,44 @@ const accountViewController = async (req, res) => {
   }
 };
 
+const updateController = async (req, res, next) => {
+  try {
+    const searchUser = await models.users.findOne({
+      where: { id: req.params.id },
+    });
+    if (searchUser === null) {
+      return next({
+        status: 400,
+        message: "user not found",
+      });
+    } else {
+      const updateUser = await models.users.update(
+        {
+          first_name: req.body.first_name,
+          last_name: req.body.last_name,
+          email: req.body.email,
+          user_name: req.body.user_name,
+          user_password: req.body.user_password,
+          phone_no: req.body.phone_no,
+        },
+        {
+          where: {
+            id: req.params.id,
+          },
+          returning: true,
+        }
+      );
 
+      res.json({
+        updateUser,
+      });
+    }
+  } catch (error) {
+    return res.send({
+      message: error.errors.map((d) => d.message),
+    });
+  }
+};
 module.exports = {
   addUserController,
   loginController,
